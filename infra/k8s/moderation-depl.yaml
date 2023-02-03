@@ -13,14 +13,8 @@ spec:
         app: moderation
     spec:
       containers:
-      - name: moderation
-        image: jzenon/moderation:latest
-        imagePullPolicy: Never
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-      
+        - name: moderation
+          image: cygnetops/moderation-84
 ---
 apiVersion: v1
 kind: Service
@@ -31,6 +25,6 @@ spec:
     app: moderation
   ports:
     - name: moderation
-      protocol: TCP 
+      protocol: TCP
       port: 4003
       targetPort: 4003

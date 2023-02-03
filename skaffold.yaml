@@ -1,59 +1,62 @@
-apiVersion: skaffold/v4beta2
+apiVersion: skaffold/v4beta1
 kind: Config
 build:
   artifacts:
-  - image: jzenon/client
-    context: client
-    sync:
-      manual:
-      - src: src/**/*.js
-        dest: .
-    docker:
-      dockerfile: Dockerfile
-  - image: jzenon/comments
-    context: comments
-    sync:
-      manual:
-      - src: '*.js'
-        dest: .
-    docker:
-      dockerfile: Dockerfile
-  - image: jzenon/event-bus
-    context: event-bus
-    sync:
-      manual:
-      - src: '*.js'
-        dest: .
-    docker:
-      dockerfile: Dockerfile
-  - image: jzenon/moderation
-    context: moderation
-    sync:
-      manual:
-      - src: '*.js'
-        dest: .
-    docker:
-      dockerfile: Dockerfile
-  - image: jzenon/posts
-    context: posts
-    sync:
-      manual:
-      - src: '*.js'
-        dest: .
-    docker:
-      dockerfile: Dockerfile
-  - image: jzenon/query
-    context: query
-    sync:
-      manual:
-      - src: '*.js'
-        dest: .
-    docker:
-      dockerfile: Dockerfile
+    - image: cygnetops/client-95
+      context: client
+      sync:
+        manual:
+          - src: src/**/*.js
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+    - image: cygnetops/comments-84
+      context: comments
+      sync:
+        manual:
+          - src: "*.js"
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+    - image: cygnetops/event-bus-85
+      context: event-bus
+      sync:
+        manual:
+          - src: "*.js"
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+    - image: cygnetops/moderation-84
+      context: moderation
+      sync:
+        manual:
+          - src: "*.js"
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+    - image: cygnetops/posts-95
+      context: posts
+      sync:
+        manual:
+          - src: "*.js"
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+    - image: cygnetops/query-84
+      context: query
+      sync:
+        manual:
+          - src: "*.js"
+            dest: .
+      docker:
+        dockerfile: Dockerfile
   local:
     push: false
 manifests:
   rawYaml:
-  - ./infra/k8s/*
+    - ./infra/k8s/*
 deploy:
   kubectl: {}
+portForward:
+  - resourceType: deployment
+    port: 3000

@@ -13,14 +13,8 @@ spec:
         app: query
     spec:
       containers:
-      - name: query
-        image: jzenon/query:latest
-        imagePullPolicy: Never
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-      
+        - name: query
+          image: cygnetops/query-84
 ---
 apiVersion: v1
 kind: Service
@@ -31,6 +25,6 @@ spec:
     app: query
   ports:
     - name: query
-      protocol: TCP 
-      port: 4001
-      targetPort: 4001
+      protocol: TCP
+      port: 4002
+      targetPort: 4002

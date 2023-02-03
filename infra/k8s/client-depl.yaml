@@ -13,14 +13,9 @@ spec:
         app: client
     spec:
       containers:
-      - name: client
-        image: jzenon/client:latest
-        imagePullPolicy: Never
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-      
+        - name: client
+          image: cygnetops/client-95
+          imagePullPolicy: Never
 ---
 apiVersion: v1
 kind: Service
@@ -31,6 +26,6 @@ spec:
     app: client
   ports:
     - name: client
-      protocol: TCP 
+      protocol: TCP
       port: 3000
       targetPort: 3000

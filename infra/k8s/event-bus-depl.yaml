@@ -13,14 +13,8 @@ spec:
         app: event-bus
     spec:
       containers:
-      - name: event-bus
-        image: jzenon/event-bus:latest
-        imagePullPolicy: Never
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-      
+        - name: event-bus
+          image: cygnetops/event-bus-85
 ---
 apiVersion: v1
 kind: Service
@@ -31,6 +25,6 @@ spec:
     app: event-bus
   ports:
     - name: event-bus
-      protocol: TCP 
+      protocol: TCP
       port: 4005
       targetPort: 4005
