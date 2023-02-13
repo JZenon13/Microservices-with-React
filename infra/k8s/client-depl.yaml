@@ -14,8 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: cygnetops/client-95
-          imagePullPolicy: Never
+          image: jzenon/client:latest
 ---
 apiVersion: v1
 kind: Service
@@ -29,3 +28,4 @@ spec:
       protocol: TCP
       port: 3000
       targetPort: 3000
+
